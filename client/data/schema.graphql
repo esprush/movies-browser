@@ -1,0 +1,20 @@
+type Movie {
+  id: ID!
+  original_title: String!
+  poster_path: String
+}
+
+type Query {
+  PopularMovies: Response
+}
+
+type Response {
+  page: Int
+  results: [Movie]
+  total_pages: Int
+  total_result: Int
+}
+
+schema {
+  query: Query
+}
