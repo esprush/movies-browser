@@ -17,7 +17,13 @@ export const UserMovieDataContextProvider = ({ children }) => {
       const movieId = userMovie.movie;
       const updatedMovie = {};
       updatedMovie[movieId] = userMovie;
-      setUserMovieData({ ...userMovieData, [movieId]: userMovie });
+      const updatedState = { ...userMovieData };
+      if (!userMovie.favourite) {
+        delete updatedState[movieId];
+      } else {
+        updatedState[movieId]=userMovie;
+      }
+      setUserMovieData(updatedState);
     }
   };
 
@@ -29,8 +35,8 @@ export const UserMovieDataContextProvider = ({ children }) => {
         {
           filter: {
             favourite: {
-              "eq":true,
-            }
+              eq: true,
+            },
           },
         }
       );

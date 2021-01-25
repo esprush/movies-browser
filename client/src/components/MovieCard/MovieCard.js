@@ -16,7 +16,7 @@ import { DETAIL_PAGE_PREFIX } from "../../constants/pages";
 import { constructCompleteImageUrl } from "../../utils/images";
 import Favourite from "../Favourite/Favourite";
 export default function MovieCard(props) {
-  if (!props.movie.id) {
+  if (!props.movie || !props.movie.id) {
     return <></>;
   }
   const movieId = props.movie.id.toString();
