@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run relay && next dev",
-    "build": "next build",
+    "build": "npm run relay && next build",
     "start": "next start",
     "relay": "relay-compiler --src ./src --schema ./src/data/schema.graphql --artifactDirectory ./src/__generated__/relay --customScalars.AWSDateTime=String" ,
     "build-flow": "babel src/ -d lib/",
