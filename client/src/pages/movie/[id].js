@@ -23,7 +23,6 @@ export default function MovieDetailPage() {
 
   let userSpecificData;
 
-  
   const submitPersonalNote = () => {
     const updatedNote = personalNote;
     setPersonalNote(updatedNote);
@@ -98,7 +97,9 @@ export default function MovieDetailPage() {
             className={styles.inputNote}
             placeholder="type personal note"
             value={personalNote}
-            onChange={(e)=>{setPersonalNote(e.target.value)}}
+            onChange={(e) => {
+              setPersonalNote(e.target.value);
+            }}
           />
           <button
             type="submit"

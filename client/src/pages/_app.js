@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import awsmobile from "../aws-exports";
 import { UserContextProvider } from "../context/Auth/Auth";
 import { UserMovieDataContextProvider } from "../context/UserMovieData/UserMovieData";
-import {SearchContextProvider} from "../context/Search/Search"
+import { SearchContextProvider } from "../context/Search/Search";
 import dynamic from "next/dynamic";
 
 import "../styles/styles.css";

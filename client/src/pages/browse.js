@@ -1,8 +1,8 @@
 import React from "react";
 import Browse from "../components/Browse/Browse";
 
-const BrowsePage=()=> {
+const BrowsePage = () => {
   return <Browse />;
-}
+};
 
-export default BrowsePage
+export default BrowsePage;
