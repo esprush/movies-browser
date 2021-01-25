@@ -1,0 +1,67 @@
+.container {
+  text-align: center;
+  padding: 50px;
+}
+
+.heading {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.poster {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.posterImage {
+  max-height: 350px;
+  max-width: 200px;
+}
+
+.poster img {
+  height: 100%;
+  width: 100%;
+}
+
+.personalNote {
+  font-size: 3vw;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.submitWrap {
+  width: 30%;
+  padding: 10px;
+  display:flex;
+}
+
+.flexDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.inputNote {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.submitNote {
+  width: 30px;
+  height: 25px;
+  border: 1px solid #00b4cc;
+  background: #ff9900;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}

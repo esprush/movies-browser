@@ -6,16 +6,22 @@
     "dev": "npm run relay && next dev",
     "build": "next build",
     "start": "next start",
-    "relay": "relay-compiler --src . --schema ./data/schema.graphql --artifactDirectory ./__generated__/relay",
+    "relay": "relay-compiler --src ./src --schema ./src/data/schema.graphql --artifactDirectory ./src/__generated__/relay --customScalars.AWSDateTime=String" ,
     "build-flow": "babel src/ -d lib/",
     "prepublish": "npm run build-flow",
     "flow": "flow"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^0.2.34",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "aws-amplify": "^3.3.14",
     "next": "^10.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-relay": "^10.1.2"
+    "react-relay": "^10.1.2",
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.32.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

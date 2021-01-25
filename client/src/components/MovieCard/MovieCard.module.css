@@ -1,0 +1,32 @@
+.container {
+  max-width: 15rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.cardTitle {
+  word-wrap: break-word;
+  max-width: 60%;
+}
+
+.cardRight {
+  display: flex;
+}
+
+.cardRightItems {
+  padding-left: 3px;
+}
+
+.poster {
+  display: fixed;
+}
+
+.pointer{
+  cursor: pointer;
+}

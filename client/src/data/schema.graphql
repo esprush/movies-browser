@@ -1,0 +1,208 @@
+type Movie {
+  id: ID!
+  original_title: String!
+  poster_path: String
+  release_date: String
+  overview: String
+  title: String!
+  vote_average: Float
+  userMovieData: UserMovieData
+}
+
+type UserMovieData {
+  movie: String!
+  user: ID!
+  favourite: Boolean
+  note: String
+  movieData: Movie
+}
+
+type Response {
+  page: Int
+  results: [Movie]
+  total_pages: Int
+  total_result: Int
+}
+
+type Query {
+  PopularMovies: Response
+  getUserMovieData(user: ID!, movie: String!): UserMovieData
+  listUserMovieDatas(user: ID, movie: ModelStringKeyConditionInput, filter: ModelUserMovieDataFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelUserMovieDataConnection
+  SearchMovies(params: QuerySearchMoviesParamsInput!): Response
+  MovieDetail(params: QueryMovieDetailParamsInput!): Movie
+}
+
+input MovieInput {
+  id: ID!
+  original_title: String!
+  poster_path: String
+  release_date: String
+  overview: String
+  title: String!
+  vote_average: Float
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserMovieDataConnection {
+  items: [UserMovieData]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelUserMovieDataFilterInput {
+  movie: ModelStringInput
+  user: ModelIDInput
+  favourite: ModelBooleanInput
+  note: ModelStringInput
+  and: [ModelUserMovieDataFilterInput]
+  or: [ModelUserMovieDataFilterInput]
+  not: ModelUserMovieDataFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input CreateUserMovieDataInput {
+  movie: String!
+  user: ID!
+  favourite: Boolean
+  note: String
+  movieData: MovieInput
+}
+
+input UpdateUserMovieDataInput {
+  movie: String!
+  user: ID!
+  favourite: Boolean
+  note: String
+  movieData: MovieInput
+}
+
+input DeleteUserMovieDataInput {
+  user: ID!
+  movie: String!
+}
+
+type Mutation {
+  createUserMovieData(input: CreateUserMovieDataInput!, condition: ModelUserMovieDataConditionInput): UserMovieData
+  updateUserMovieData(input: UpdateUserMovieDataInput!, condition: ModelUserMovieDataConditionInput): UserMovieData
+  deleteUserMovieData(input: DeleteUserMovieDataInput!, condition: ModelUserMovieDataConditionInput): UserMovieData
+}
+
+input ModelUserMovieDataConditionInput {
+  favourite: ModelBooleanInput
+  note: ModelStringInput
+  and: [ModelUserMovieDataConditionInput]
+  or: [ModelUserMovieDataConditionInput]
+  not: ModelUserMovieDataConditionInput
+}
+
+type Subscription {
+  onCreateUserMovieData(user: String!): UserMovieData @aws_subscribe(mutations: ["createUserMovieData"])
+  onUpdateUserMovieData(user: String!): UserMovieData @aws_subscribe(mutations: ["updateUserMovieData"])
+  onDeleteUserMovieData(user: String!): UserMovieData @aws_subscribe(mutations: ["deleteUserMovieData"])
+}
+
+input QuerySearchMoviesParamsInput {
+  title: String!
+}
+
+input QueryMovieDetailParamsInput {
+  movie: String!
+}
+
+input ModelStringKeyConditionInput {
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: [String]
+  beginsWith: String
+}

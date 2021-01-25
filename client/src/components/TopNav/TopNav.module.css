@@ -1,0 +1,38 @@
+.topNav {
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #000000;
+}
+
+.title{
+  padding: 10px;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+}
+
+.loginOptionsContainer {
+  display: flex;
+  justify-content: pull-right;
+}
+
+.loginOptions {
+  padding: 10px;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 100;
+}
+
+.loginOptionsText{
+  color: white;
+  text-decoration: none;
+}
+
+.signout{
+  padding:3px;
+}

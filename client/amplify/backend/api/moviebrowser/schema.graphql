@@ -1,0 +1,78 @@
+type Movie {
+  id: ID!
+  original_title: String!
+  poster_path: String
+  release_date: String
+  overview: String
+  title: String!
+  vote_average: Float
+  userMovieData: UserMovieData
+}
+
+type UserMovieData
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "user"
+        operations: [create, update, delete, read]
+      }
+    ]
+  )
+  @key(fields: ["user", "movie"]){  
+  movie: String!
+  user: ID!
+  favourite: Boolean
+  note: String
+  movieData: Movie
+    @http(
+      url: "http://api.themoviedb.org/3/movie/${ctx.source.movie}"
+      headers: [
+        {
+          key: "Authorization"
+          value: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTRiOTg5ZTU0NWY0NWMzZGI1MmMwMGI4YjRmYzVkZSIsInN1YiI6IjVmZmE3N2NkZGQ4M2ZhMDAzZTZmYWFhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l__tWJb-TSkXifNmTgA9AEXtBCS1n-kKhcwRWdg1UTg"
+        }
+      ]
+    )
+}
+
+type Response {
+  page: Int
+  results: [Movie]
+  total_pages: Int
+  total_result: Int
+}
+
+type Query {
+  SearchMovies: Response
+  @http(
+      url: "http://api.themoviedb.org/3/search/movie?query=:title"
+      headers: [
+        {
+          key: "Authorization"
+          value: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTRiOTg5ZTU0NWY0NWMzZGI1MmMwMGI4YjRmYzVkZSIsInN1YiI6IjVmZmE3N2NkZGQ4M2ZhMDAzZTZmYWFhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l__tWJb-TSkXifNmTgA9AEXtBCS1n-kKhcwRWdg1UTg"
+        }
+      ]
+    )
+  PopularMovies: Response
+    @http(
+      url: "http://api.themoviedb.org/3/movie/popular"
+      headers: [
+        {
+          key: "Authorization"
+          value: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTRiOTg5ZTU0NWY0NWMzZGI1MmMwMGI4YjRmYzVkZSIsInN1YiI6IjVmZmE3N2NkZGQ4M2ZhMDAzZTZmYWFhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l__tWJb-TSkXifNmTgA9AEXtBCS1n-kKhcwRWdg1UTg"
+        }
+      ]
+    )
+  MovieDetail: Movie
+    @http(
+      url: "http://api.themoviedb.org/3/movie/:movie"
+      headers: [
+        {
+          key: "Authorization"
+          value: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTRiOTg5ZTU0NWY0NWMzZGI1MmMwMGI4YjRmYzVkZSIsInN1YiI6IjVmZmE3N2NkZGQ4M2ZhMDAzZTZmYWFhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l__tWJb-TSkXifNmTgA9AEXtBCS1n-kKhcwRWdg1UTg"
+        }
+      ]
+    )
+}
