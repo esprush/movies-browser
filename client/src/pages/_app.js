@@ -1,4 +1,4 @@
-import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
+import { AmplifyAuthenticator, AmplifySignIn, AmplifySignUp } from "@aws-amplify/ui-react";
 import Amplify, { Auth } from "aws-amplify";
 import { useRouter } from "next/router";
 import awsmobile from "../aws-exports";
@@ -14,6 +14,25 @@ Auth.configure(awsmobile);
 const Application = ({ Component, pageProps }) => {
   return (
     <AmplifyAuthenticator>
+      <AmplifySignUp
+        slot="sign-up"
+        formFields={[
+          { type: "username" },
+          { type: "email" },
+          {
+            type: "password",
+          },
+        ]}
+      />
+      <AmplifySignIn
+        slot="sign-in"
+        formFields={[
+          { type: "email" },
+          {
+            type: "password",
+          },
+        ]}
+      />
       <UserContextProvider>
         <SearchContextProvider>
           <UserMovieDataContextProvider>

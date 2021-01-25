@@ -12,8 +12,8 @@ const awsmobile = {
             "email",
             "openid"
         ],
-        "redirectSignIn": "https://www.google.com/login",
-        "redirectSignOut": "https://www.google.com/logout",
+        "redirectSignIn": "https://movies-browser.vercel.app/",
+        "redirectSignOut": "https://movies-browser.vercel.app/",
         "responseType": "token"
     },
     "federationTarget": "COGNITO_USER_POOLS",
